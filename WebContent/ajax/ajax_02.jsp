@@ -90,11 +90,39 @@ function callback(){
 // 	console.log(xmlHttp.readyState);
 	
 	if(xmlHttp.readyState == 4){ // XHR DONE
+		if(xmlHttp.status == 200){ // OK.
+			console.log("정상 응답");
 		
+			// 정상 응답 데이터를 처리하는 함수 호출 - -
+			printData();
+		
+		}else if(xmlHttp.status == 404) { //Not Found.
+			console.log("페이지 없음");
+		}else if(xmlHttp.status == 500){ //Server Internal Error.
+			console.log("서버 에러");	
+		}else{
+			// 200(OK)또는 404(Not Found) 또는 500(Server Error)가 아닐 경우
+			console.log(xmlHttp.statusText);
+		}
 	}
 }
 
-
+// 응답 데이터 처리 함수
+function printData(){
+// 	console.log("200 상태코드를 가진 정상 응답시 호출되는 함수");
+	
+	// 응답 데이터
+	var result = xmlHttp.responseText;
+	console.log(result);
+	
+	// 결과를 반영할 div
+// 	var layout = document.getElementById("resultLayout");
+	var layout = resultLayout
+	
+	// 결과 반영
+	layout.innerHTML = result;
+	
+}
 
 </script>
 
@@ -102,7 +130,7 @@ function callback(){
 <body>
 
 
-<h1>계산기01</h1>
+<h1>계산기02</h1>
 <hr>
 
 	<input type="text" id="num1" />
