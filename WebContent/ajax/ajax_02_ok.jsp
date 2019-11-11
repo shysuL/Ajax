@@ -22,3 +22,4 @@
 		${n1} / ${n2 } = <fmt:formatNumber value="${n1 / n2}" pattern="0.00"/><br>
 	</c:when>
 </c:choose>
+ 
