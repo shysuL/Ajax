@@ -1,6 +1,7 @@
 package json;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +39,15 @@ public class GsonTest_02 extends HttpServlet {
 		
 		System.out.println(p2);
 		
+		System.out.println("------------------");
+		HashMap map = new HashMap();
+		map.put("A", "Alice");
+		map.put("Bob", "blue");
+		map.put("p", new Person());
 		
+		System.out.println(map);
+		String jsonText2 = gson.toJson(map);
+		System.out.println(jsonText2);
 		
 	}
 }
