@@ -33,8 +33,33 @@ function callback(){
 function printData(){
 	var res = document.getElementById("result");
 	
+	var jsonText = httpRequest.responseText; // 응답 데이터 받기
+	
+	var jsonObject = JSON.parse(jsonText); // 응답 데이터 JSON 파싱, 언마샬링
+	// 1	
+// 	res.innerHTML += JSON.parse(jsonText) + "<br>"
+	
+// 	res.innerHTML += jsonObject + "<br>";
+
+
+	// 2
+	console.log(jsonObject);
+// 	console.log(jsonObject.data);
+// 	res.innerHTML += jsonObject.data + "<br>";
+
+	// Member Map
+// 	res.innerHTML += "<br>" + jsonObject.id + ":" + jsonObject.pw + "<br>";
+
+	// Member List
+	for(var i = 0; i<jsonObject.length; i++){
+		res.innerHTML += "<div>" + jsonObject[i].id + ":" + jsonObject[i].pw + "<div>";
+	}
+	
+
+// ========================
 // 	res.innerHTML = httpRequest.responseText;
-	res.innerHTML += httpRequest.responseText + "<br>";
+// 	res.innerHTML += httpRequest.responseText + "<br>";
+	
 	
 }
 </script>
