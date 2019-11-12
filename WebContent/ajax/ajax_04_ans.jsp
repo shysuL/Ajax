@@ -8,39 +8,10 @@
 
 <script type="text/javascript" src = "/js/httpRequest.js"></script>
 
-<script type="text/javascript">
-//AJAX 객체(XHR) 을 생성하는 함수 - Cross Browsing 처리
-function createXMLHttpRequest(){
 
-	var xmlReq = null;
-	if(XMLHttpRequest){ // XMLHttpRequest 객체가 존재한다면
-		// IE 7.0이상일 때
-		// IE 브라우저가 아닐 때
-		xmlReq = new XMLHttpRequest();
-	}else if(window.ActiveXObject){
-		//ActiveXObject가 존재하는 브라우저일 때
-		// -> IE계열 브라우저
-		
-		try{
-			// 비교적 최근 버전
-			xmlReq = new ActiveXObject("Msxml2.XMLHTTP");
-		}catch(e1){
-			
-			try{
-				// 비교적 예전 버전
-				xmlReq = new ActiveXObject("Microsoft.XMLHTTP");
-			}catch(e2){
-				// XHR이 없는 경우 아무것도 수행하지 않음
-			}
-		}
-	}
-	return xmlReq;
-}
-</script>
 
 <script type="text/javascript">
 
-var xmlHttp = null; // AJAX 객체
 
 // <button>태그의 onclick 리스너
 // AJAX 호출 코드
@@ -98,24 +69,6 @@ function appendResult(){
 	window.result.innerHTML += httpRequest.responseText;
 }
 
-// 응답 데이터 처리 함수
-function printData(){
-// 	console.log("200 상태코드를 가진 정상 응답시 호출되는 함수");
-	
-	// 응답 데이터
-	var result = xmlHttp.responseText;
-	console.log(result);
-	
-	// 결과를 반영할 div
-// 	var layout = document.getElementById("resultLayout");
-	var layout = resultLayout
-	
-	
-	// 결과 반영
-	layout.innerHTML = result;
-	
-	
-}
 
 
 // body를 strig으로받고 
