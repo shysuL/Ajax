@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+src = https://code.jquery.com/jquery-2.2.4.min.js></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#btnCalc").on("click", function(){
+// 		console.log("btnCalc Clicked!")
+		
+		var n1 = $("#num1").val();
+		var n2 = $("#num2").val();
+		var op = $("#oper").val();
+// 		console.log(n1 + ", " + n2 + ", " + op);
+
+		// - - - 전달 파라미터 - - - 
+		
+		// PlainObject
+		var data = {
+				"num1" : n1
+				, "num2" : n2
+				, "oper" : op
+		};
+		   
+		// String
+		var query = "num1=" + n1 + "&num2=" + n2 + "&oper=" + op;
+		
+		console.log(data);
+		console.log(query);
+		
+		// ---------------------
+		
+		// 요청 URL
+		var url = "/jqAjax/jqAjax_ok.jsp"
+		
+		
+		// .load()를 이용한 Ajax 요청
+// 		$("#resultLayout").load(url, data); // POST 전송
+		
+// 		$("#resultLayout").load(url, query); // GET 전송
+		
+		
+		
+// ------------------  = 위의 코딩 -------------------------------
+//-----------------------------------------------------------------		
+		$("#resultLayout").load(
+				"/jqAjax/jqAjax_ok.jsp"
+				,{
+					"num1" : $("#num1").val()
+					, "num2" : $("#num2").val()
+					, "oper" : $("#oper").val()
+				}
+		)
+//-----------------------------------------------------------------		
+		
+	})
+})
+
+
+</script>
+
+</head>
+<body>
+
+
+<h1>jQuery 계산기01</h1>
+<hr>
+
+	<input type="text" id="num1" />
+	<select id="oper">
+		<option value="add">더하기</option>
+		<option value="sub">빼기기</option>
+		<option value="mul">곱하기</option>
+		<option value="div">나누기</option>
+	</select><br>
+	<input type="text" id="num2" />
+	<button id="btnCalc">=</button>
+
+<hr>
+<div id="resultLayout"></div>
+
+</body>
+</html>
