@@ -60,9 +60,43 @@ $(document).ready(function(){
 		)
 //-----------------------------------------------------------------		
 		
+		// complete 매개변수 확인
+		$("#resultLayout").load(url,data,function(){
+			console.log(".load()함수 호출 완료")
+		});
+		
+		
+// 		$("#resultLayout").load(
+// 				"/jqAjax/jqAjax_ok.jsp"
+// 				,{
+// 					"num1" : $("#num1").val()
+// 					, "num2" : $("#num2").val()
+// 					, "oper" : $("#oper").val()
+// 				}
+// 				, function(){
+// 					console.log(".load()함수 호출 완료")
+// 				}
+// 		)
+		
+		
 	})
 })
 
+function complete(responseText, textStatus, jqXHR){
+	console.log("complete() called")
+	console.log(".load()를 이용한 Ajax 요청에 대한 응답이 잘 이루어졌음")
+	
+	console.log(" --- responseText --- ")
+	console.log(responseText)
+	
+	console.log(" --- textStatus --- ")
+	console.log(textStatus)
+
+	console.log(" --- jqXHR --- ")
+	console.log(jqXHR)
+
+
+}
 
 </script>
 
